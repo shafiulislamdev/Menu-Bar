@@ -1,0 +1,4 @@
+.from-input:focus ~ .from-label,
+.from-input:valid ~ .from-label {
+  display: block;
+}
