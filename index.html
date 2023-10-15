@@ -15,15 +15,37 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&display=swap"
       rel="stylesheet" />
     <title>Menu</title>
+    <style>
+      #menu_icon {
+        color: #FF3c97;
+        font-size: 30px;
+        font-weight: 700;
+      }
+      .dropdown_menu {
+        left: 0;
+        right: 0;
+        top: 70px;
+        height: 0;
+        width: 300px;
+        background: rgba(66, 125, 95, 0.5);
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+      .dropdown_menu.open {
+       height: 400px;
+      }
+    </style>
   </head>
   <body class="bg-[#131F87] w-full min-h-screen font-['Lato']">
     <div class="">
       <div
-        class="container mx-auto bg- h-[80px] py-6 flex items-center justify-between"
+        class="container mx-auto max-sm:px-10 bg- h-[80px] py-6 flex items-center justify-between relative "
       >
+       
         <a href="#"><img class="" src="./image/logo-light.svg" alt="" /></a>
-        <nav>
-          <ul class="flex items-center text-white  justify-center font-semibold">
+        <ul class="flex items-center text-white max-sm:hidden   justify-center font-semibold">
             <li
               style="font-size: 13px"
               class="relative cursor-pointer  group pr-6 mr-2 py-8"
@@ -868,9 +890,30 @@
                 >Pricing</a
               >
             </div>
-          </ul>
-        </nav>
+        </ul>  
+        <div id="menu_btn" class="toggle_btn block lg:hidden">
+          <i id="menu_icon" class="fa-solid fa-bars"></i>
+        </div>
+       <!-- dropdown menu -->
+       <div id="dropdown_menu" class="dropdown_menu bg-[rgba(66, 125, 95, 0.5)] overflow-hidden h-0 w-full bg-white  absolute lg:hidden">
+        
+      </div>
       </div>
     </div>
+    <script>
+      const toggleBtn = document.getElementById("menu_btn")
+      const toggleBtnIcon = document.getElementById("menu_icon")
+      const dropDownMenu = document.getElementById("dropdown_menu")
+
+      toggleBtn.onclick = function(){
+          dropDownMenu.classList.toggle('open')
+          const isOpen = dropDownMenu.classList.contains('open')
+
+          toggleBtnIcon.classList = isOpen
+              ? 'fa-solid  fa-xmark'
+              : 'fa-solid  fa-bars'
+      }
+
+    </script>
   </body>
 </html>
